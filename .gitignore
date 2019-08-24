@@ -1,0 +1,8 @@
+*.pyc
+*.pickle
+*.log
+
+config.json
+
+.idea/
+venv/
