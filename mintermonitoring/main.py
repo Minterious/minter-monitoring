@@ -71,11 +71,11 @@ if __name__ == '__main__':
                 # If status = 1, node is offline
                 if status == 1:
                     msg = '{} node is offline'.format(pub_key)
-                    logging.debug(msg)
+                    logging.info(msg)
                     for bot, chat_id in chats:
                         bot.send_message(chat_id=chat_id, text=msg)
             else:
-                logging.error(error)
+                logging.error('get_candidate: {}'.format(error))
 
             response = minterapi.get_missed_blocks(pub_key)
 
@@ -85,10 +85,10 @@ if __name__ == '__main__':
 
                 if missed_blocks > 0:
                     msg = '{} node has missed {} blocks'.format(pub_key, missed_blocks)
-                    logging.debug(msg)
+                    logging.info(msg)
                     for bot, chat_id in chats:
                         bot.send_message(chat_id=chat_id, text=msg)
             else:
-                logging.error(error)
+                logging.error('get_missed_blocks: {}'.format(error))
 
         time.sleep(1)
