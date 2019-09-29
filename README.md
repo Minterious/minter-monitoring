@@ -23,7 +23,7 @@ You should customize the following parameters:
 3. `telegram_bot_token` - Telegram Bot API access token
 4. `monitoring_auth_key` - can be any secret string to use as an alerts subscription key for your Telegram bot
 
-Update node-pubkey.json with public key -> node name to beautify notification messages
+Update node-pubkey.json with public key -> node name to beautify notification messages if there is no public key of node you want to monitor.
 
 Create service file like `/etc/systemd/system/minter-monitoring.service` with the following content:
 ```

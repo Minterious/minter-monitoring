@@ -82,8 +82,8 @@ if __name__ == '__main__':
                         # If status = 1 and node was previously online, alert that it's offline now
                         if status == 1 and node['status'] == 2:
                             msg = '{} node is offline'.format(pub_key)
-                            if pub_key.__str__ in pubkey_to_name:
-                                msg = '{} node is offline'.format(pubkey_to_name[pub_key.__str__])
+                            if pub_key in pubkey_to_name:
+                                msg = '{} node is offline'.format(pubkey_to_name[pub_key])
                             logging.info(msg)
                             for bot, chat_id in chats:
                                 bot.send_message(chat_id=chat_id, text=msg)
@@ -100,8 +100,8 @@ if __name__ == '__main__':
                         # If missed blocks count has increased, alert
                         if missed_blocks > node['missed_blocks']:
                             msg = '{} node has missed {} blocks'.format(pub_key, missed_blocks)
-                            if pub_key.__str__ in pubkey_to_name:
-                                msg = '{} node is offline'.format(pubkey_to_name[pub_key.__str__])
+                            if pub_key in pubkey_to_name:
+                                msg = '{} node is offline'.format(pubkey_to_name[pub_key])
                             logging.info(msg)
                             for bot, chat_id in chats:
                                 bot.send_message(chat_id=chat_id, text=msg)
