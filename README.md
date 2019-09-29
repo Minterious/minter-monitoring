@@ -20,10 +20,9 @@ Create `/home/minter-monitoring/config.json` file based on [example](https://git
 You should customize the following parameters:
 1. `minter_api_url` - API url of a synced mainnet Minter node
 2. `minter_nodes_pub_keys` - public keys of nodes to monitor
-3. `telegram_bot_token` - Telegram Bot API access token
-4. `monitoring_auth_key` - can be any secret string to use as an alerts subscription key for your Telegram bot
-
-Update node-pubkey.json with public key -> node name to beautify notification messages if there is no public key of node you want to monitor.
+3. `node_pubkey` - mapping public key -> node name
+4. `telegram_bot_token` - Telegram Bot API access token
+5. `monitoring_auth_key` - can be any secret string to use as an alerts subscription key for your Telegram bot
 
 Create service file like `/etc/systemd/system/minter-monitoring.service` with the following content:
 ```
