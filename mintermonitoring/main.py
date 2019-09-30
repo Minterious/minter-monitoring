@@ -97,7 +97,7 @@ if __name__ == '__main__':
                         if missed_blocks > node['missed_blocks']:
                             msg = '{} node has missed {} blocks'.format(pub_key, missed_blocks)
                             if pub_key in config['node_pubkey']:
-                                msg = '{} node is offline'.format(config['node_pubkey'][pub_key])
+				msg = '{} node has missed {} blocks'.format(config['node_pubkey'][pub_key], missed_blocks)
                             logging.info(msg)
                             for bot, chat_id in chats:
                                 bot.send_message(chat_id=chat_id, text=msg)
