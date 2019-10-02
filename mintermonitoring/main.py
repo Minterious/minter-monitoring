@@ -7,7 +7,6 @@ import pickle
 from telegram.ext import Updater, CommandHandler
 from mintersdk.minterapi import MinterAPI
 
-
 if __name__ == '__main__':
     try:
         if len(sys.argv) < 2:
@@ -32,6 +31,7 @@ if __name__ == '__main__':
         except FileNotFoundError:
             chats = []  # [(bot, chat_id), ...]
 
+
         def start(update, context):
             msg = update.message
             bot = context.bot
@@ -51,6 +51,7 @@ if __name__ == '__main__':
                 pickle.dump(chats, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
             bot.send_message(chat_id=chat_id, text="Successful auth")
+
 
         start_handler = CommandHandler('start', start)
         dispatcher.add_handler(start_handler)
@@ -97,7 +98,8 @@ if __name__ == '__main__':
                         if missed_blocks > node['missed_blocks']:
                             msg = '{} node has missed {} blocks'.format(pub_key, missed_blocks)
                             if pub_key in config['node_pubkey']:
-				msg = '{} node has missed {} blocks'.format(config['node_pubkey'][pub_key], missed_blocks)
+                                msg = '{} node has missed {} blocks'.format(config['node_pubkey'][pub_key],
+                                                                            missed_blocks)
                             logging.info(msg)
                             for bot, chat_id in chats:
                                 bot.send_message(chat_id=chat_id, text=msg)
