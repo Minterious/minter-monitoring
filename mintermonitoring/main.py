@@ -61,6 +61,8 @@ if __name__ == '__main__':
         minterapi = MinterAPI(config['minter_api_url'])
         pub_keys = config['minter_nodes_pub_keys']
 
+        missed_blocks_threshold_to_notify = config['missed_blocks_threshold_to_notify']
+
         nodes = {
             pub_key: {'status': 2, 'missed_blocks': 0}
             for pub_key in pub_keys
@@ -101,8 +103,9 @@ if __name__ == '__main__':
                                 msg = '{} node has missed {} blocks'.format(config['node_pubkey'][pub_key],
                                                                             missed_blocks)
                             logging.info(msg)
-                            for bot, chat_id in chats:
-                                bot.send_message(chat_id=chat_id, text=msg)
+                            if missed_blocks > missed_blocks_threshold_to_notify:
+                                for bot, chat_id in chats:
+                                    bot.send_message(chat_id=chat_id, text=msg)
                         node['missed_blocks'] = missed_blocks
                     else:
                         logging.error('get_missed_blocks: {}'.format(error))

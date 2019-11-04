@@ -4,6 +4,8 @@
       "",""
   ],
 
+  "missed_blocks_threshold_to_notify": 2,
+
   "node_pubkey" : {
     "Mp14d5f76de9ddc5c3eb7ed24af7de91274c9156de4585a01d2731e75c0fc65170": "Minterious",
     "Mpaaaaa16ebd6af229b4cfc02c3ab40bd25c1051c3aa2120f07d08c1bd01777777": "Minter One",
